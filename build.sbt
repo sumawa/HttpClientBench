@@ -8,6 +8,8 @@ val zhttpVersion     = "1.0.0.0-RC25"
 //val http4sVersion = "0.20.22"
 val http4sVersion = "0.23.11"
 
+lazy val zhttp = ProjectRef(uri(s"https://github.com/---COMMIT_SHA---"), "zhttp")
+
 lazy val root = project
   .in(file("."))
   .settings(
@@ -16,6 +18,7 @@ lazy val root = project
     scalaVersion := "2.12.11",
 //    scalaVersion := "2.13.0",
   )
+  .dependsOn(zhttp)
 
 addCommandAlias("fmt", "all scalafmtSbt scalafmt test:scalafmt")
 addCommandAlias(
@@ -31,7 +34,7 @@ libraryDependencies ++= Seq(
 //  "dev.zio" %% "zio-test-sbt" % ZIOVersion % "test",
 
   // zio-http
-  "io.d11"                %% "zhttp"                          % zhttpVersion,
+//  "io.d11"                %% "zhttp"                          % zhttpVersion,
 
   // sttp
   "com.softwaremill.sttp.client3" %% "core" % "3.5.1",
