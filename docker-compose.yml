@@ -25,7 +25,7 @@ services:
         ]
       interval: 20s
       timeout: 20s
-      retries: 50
+      retries: 100
 
     # Mount volume 
     volumes:
