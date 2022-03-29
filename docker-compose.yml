@@ -1,0 +1,66 @@
+version: '2.2'
+services:
+
+  zhttp-server:
+    #build: .
+    image: hseeberger/scala-sbt:11.0.12_1.5.5_2.13.6
+
+    mem_limit: 4G
+    mem_reservation: 1G
+    cpus: 0.5    
+
+    ports:
+      - "7777:7777"
+
+    container_name: zhttp-server
+
+    # environment:
+    #   - "CLIENT_TYPE=ZHTTP"
+
+    healthcheck:
+      test:
+        [
+            "CMD",
+            "curl", "-i", "http://localhost:7777/get"
+        ]
+
+    # Mount volume 
+    volumes:
+      - "./extra/:/extra"
+      - "./cache/:/home/sbtuser/.cache"
+      - "./sbt/:/home/sbtuser/.sbt"
+      - "./log/:/log"
+      - "./build.sbt:/build.sbt"
+      - "./assembly.sbt:/assembly.sbt"
+      - "./project:/project"
+      - "./src:/src"
+      - "./target:/target"
+
+    command: bash -c "/extra/run_server.sh"
+
+  zhttp-client:
+
+    image: hseeberger/scala-sbt:11.0.12_1.5.5_2.13.6
+    #build: .
+
+    environment:
+      - "CLIENT_TYPE=STTP"
+      # - "CLIENT_TYPE=ZHTTP"
+      - "ROOT_CONTEXT=zhttp-server:7777"
+
+    depends_on:
+      zhttp-server:
+        condition: service_healthy
+#      - "zhttp-server"
+
+    container_name: zhttp-client
+
+    # Mount volume 
+    volumes:
+      - "./extra/:/extra"
+      - "./log/:/log"
+      - "./target:/target"
+
+
+    command: bash -c "/extra/run_client.sh"
+
