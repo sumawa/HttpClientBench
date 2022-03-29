@@ -23,8 +23,8 @@ services:
             "CMD",
             "curl", "-i", "http://localhost:7777/get"
         ]
-      interval: 20s
-      timeout: 20s
+      interval: 30s
+      timeout: 30s
       retries: 200
 
     # Mount volume 
