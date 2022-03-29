@@ -7,8 +7,8 @@ val zhttpVersion     = "1.0.0.0-RC25"
 //val http4sVersion = "0.20.22"
 val http4sVersion = "0.23.11"
 
-//lazy val zhttp = ProjectRef(uri(s"https://github.com/---COMMIT_SHA---"), "zhttp")
-lazy val zhttp = ProjectRef(uri(s"https://github.com/dream11/zio-http.git#ff4cad3166d5c3c134a3046933aaeadc01390487"), "zhttp")
+lazy val zhttp = ProjectRef(uri(s"https://github.com/---COMMIT_SHA---"), "zhttp")
+//lazy val zhttp = ProjectRef(uri(s"https://github.com/dream11/zio-http.git#a7b6fe27bb0df2287834773ce0615ee3931e64a7"), "zhttp")
 
 lazy val root = project
   .in(file("."))
