@@ -1,4 +1,5 @@
 rm -rf /log/*.log
+rm -rf /log/*.out
 #echo "$(pwd)" >> /log/server_out.log
 echo "BUILDING ASSEMBLY IN SERVER" >> /log/server_out.log
 cd /
