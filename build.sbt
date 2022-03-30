@@ -1,21 +1,17 @@
 val ZIOVersion = "1.0.13"
 //val ZIOVersion = "2.0.0-RC2"
-//val zhttpVersion     = "1.0.0.0-RC19"
 val zhttpVersion     = "1.0.0.0-RC25"
 //val zhttpVersion = "2.0.0-RC4"
 
-//val http4sVersion = "0.20.22"
 val http4sVersion = "0.23.11"
 
 lazy val zhttp = ProjectRef(uri(s"https://github.com/---COMMIT_SHA---"), "zhttp")
-//lazy val zhttp = ProjectRef(uri(s"https://github.com/dream11/zio-http.git#a7b6fe27bb0df2287834773ce0615ee3931e64a7"), "zhttp")
 
 lazy val root = project
   .in(file("."))
   .settings(
     name := "client-benchmark",
     organization := "bench",
-//    scalaVersion := "2.12.11",
     scalaVersion := "2.13.0",
   )
   .dependsOn(zhttp)
@@ -45,8 +41,6 @@ libraryDependencies ++= Seq(
   "org.http4s" %% "http4s-blaze-server" % http4sVersion,
   "org.http4s" %% "http4s-blaze-client" % http4sVersion,
 
-  // cats interop
-  //"dev.zio" %% "zio-interop-cats" % "2.5.1.0",
 )
 
 testFrameworks := Seq(new TestFramework("zio.test.sbt.ZTestFramework"))
