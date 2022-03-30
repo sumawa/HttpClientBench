@@ -1,5 +1,5 @@
 rm -rf /log/*.log
-echo "$(pwd)" >> /log/server_out.log
+#echo "$(pwd)" >> /log/server_out.log
 echo "BUILDING ASSEMBLY IN SERVER" >> /log/server_out.log
 cd /
 # export SBT_OPTS="-XX:+CMSClassUnloadingEnabled -XX:MaxPermSize=2G -Xmx2G -Xms1G"
