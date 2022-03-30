@@ -5,14 +5,15 @@ val zhttpVersion     = "1.0.0.0-RC25"
 
 val http4sVersion = "0.23.11"
 
-lazy val zhttp = ProjectRef(uri(s"https://github.com/---COMMIT_SHA---"), "zhttp")
+//lazy val zhttp = ProjectRef(uri(s"https://github.com/---COMMIT_SHA---"), "zhttp")
+lazy val zhttp = ProjectRef(uri(s"https://github.com/dream11/zio-http.git#a7b6fe27bb0df2287834773ce0615ee3931e64a7"), "zhttp")
 
 lazy val root = project
   .in(file("."))
   .settings(
     name := "client-benchmark",
     organization := "bench",
-    scalaVersion := "2.13.0",
+    scalaVersion := "2.13.1",
   )
   .dependsOn(zhttp)
 
@@ -45,34 +46,3 @@ libraryDependencies ++= Seq(
 
 testFrameworks := Seq(new TestFramework("zio.test.sbt.ZTestFramework"))
 
-scalacOptions in Compile in console := Seq(
-  "-Ypartial-unification",
-  "-language:higherKinds",
-  "-language:existentials",
-  "-Yno-adapted-args",
-  "-Xsource:2.13",
-  "-Yrepl-class-based",
-  "-deprecation",
-  "-encoding",
-  "UTF-8",
-  "-explaintypes",
-  "-Yrangepos",
-  "-feature",
-  "-Xfuture",
-  "-unchecked",
-  "-Xlint:_,-type-parameter-shadow",
-  "-Ywarn-numeric-widen",
-  "-Ywarn-value-discard",
-  "-opt-warnings",
-  "-Ywarn-extra-implicit",
-  "-Ywarn-unused:_,imports",
-  "-Ywarn-unused:imports",
-  "-opt:l:inline",
-  "-opt-inline-from:<source>",
-  "-Ypartial-unification",
-  "-Yno-adapted-args",
-  "-Ywarn-inaccessible",
-  "-Ywarn-infer-any",
-  "-Ywarn-nullary-override",
-  "-Ywarn-nullary-unit"
-)
