@@ -6,6 +6,6 @@ cd /
 sbt assembly >> /log/assembly.log
 echo "DONE BUILDING ASSEMBLY" >> /log/server_out.log
 
-java -classpath /target/scala-2.12/client-benchmark-assembly-0.1.0-SNAPSHOT.jar bench.SimpleServer >> /log/out.log 
+java -classpath /target/scala-2.13/client-benchmark-assembly-0.1.0-SNAPSHOT.jar bench.SimpleServer >> /log/out.log 
 
 
