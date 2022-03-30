@@ -22,12 +22,12 @@ object SttpStandaloneBenchmark extends scala.App {
   1 to N foreach  { _ => grequest.send(backend).statusText}
   val durationGet = System.currentTimeMillis() - startTimeGet
 
-  println(s"\nSTTP : GET $N requests --- ${(N * 1000 / durationGet)} requests/sec ")
+  println(s"\n | STTP | GET | $N | ${(N * 1000 / durationGet)} | \n")
 
   val startTimePost = System.currentTimeMillis()
   1 to N foreach { _ => prequest.send(backend).statusText }
   val durationPost = System.currentTimeMillis() - startTimeGet
 
-  println(s"STTP : POST $N requests --- ${(N * 1000 / durationPost)} requests/sec ")
+  println(s"\n | STTP | POST | $N | ${(N * 1000 / durationPost)} | \n ")
 
 }
