@@ -20,12 +20,12 @@ object ZhttpBenchmark extends zio.App {
     startTime <- ZIO(System.nanoTime())
     _ <- Client.request(gurl).map(_.status).repeatN(n)
     duration = TimeUnit.NANOSECONDS.toMillis(System.nanoTime() - startTime)
-    _        = println(s"\n | ZIO-HTTP | GET | $n | ${(n * 1000 / duration)} | \n")
+    _        = println(s"\n | ZIO-HTTP | GET | $n | ${(n * 1000 / duration)} | %0A ")
 
     startTime <- ZIO(System.nanoTime())
     _ <- Client.request(purl, Method.POST, Headers.empty, HttpData.fromString("Sample content")).map(_.status).repeatN(n)
     duration = TimeUnit.NANOSECONDS.toMillis(System.nanoTime() - startTime)
-    _        = println(s"\n | ZIO-HTTP | POST | $n | ${(n * 1000 / duration)} | \n")
+    _        = println(s"\n | ZIO-HTTP | POST | $n | ${(n * 1000 / duration)} | %0A ")
 
   } yield ()).provideCustomLayer(env)
 

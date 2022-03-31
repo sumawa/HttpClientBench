@@ -30,8 +30,6 @@ services:
     # Mount volume 
     volumes:
       - "./extra/:/extra"
-      #- "~/cbcache/:/home/sbtuser/.cache"
-      #- "~/cbsbt/:/home/sbtuser/.sbt"
       - "~/.cache/:/home/sbtuser/.cache"
       - "~/.sbt/:/home/sbtuser/.sbt"
       - "./log/:/log"

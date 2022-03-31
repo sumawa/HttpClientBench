@@ -23,12 +23,12 @@ object Http4sBenchmark extends cats.effect.IOApp {
     startTime <- IO.delay(System.nanoTime())
     _  <- client.status(getRequest).replicateA(n)
     duration = TimeUnit.NANOSECONDS.toMillis(System.nanoTime() - startTime)
-    _        <- IO.delay( println(s"\n | Http4s | GET | $n | ${(n * 1000 / duration)} | \n "))
+    _        <- IO.delay( println(s"\n | Http4s | GET | $n | ${(n * 1000 / duration)} | %0A "))
 
     startTime <- IO.delay(System.nanoTime())
     _  <- client.status(postRequest).replicateA(n)
     duration = TimeUnit.NANOSECONDS.toMillis(System.nanoTime() - startTime)
-    _        <- IO.delay( println(s"\n | Http4s | POST | $n | ${(n * 1000 / duration)} | \n "))
+    _        <- IO.delay( println(s"\n | Http4s | POST | $n | ${(n * 1000 / duration)} | %0A "))
 
   } yield ()
 
