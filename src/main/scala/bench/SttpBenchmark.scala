@@ -24,13 +24,13 @@ object SttpBenchmark extends zio.App {
 
     startTime <- ZIO(System.nanoTime())
     _         <- backend.flatMap(backend => grequest.send(backend).map(_.statusText).repeatN(n))
-    duration = TimeUnit.NANOSECONDS.toMillis(System.nanoTime() - startTime)
-    _        = println(s"\nSTTP : GET $n requests --- ${(n * 1000 / duration)} requests/sec")
+    durationGet = TimeUnit.NANOSECONDS.toMillis(System.nanoTime() - startTime)
+    _        = println(s"\n | STTP | GET | $n | ${(n * 1000 / durationGet)} | %0A ")
 
     startTime <- ZIO(System.nanoTime())
     _         <- backend.flatMap(backend => prequest.send(backend).map(_.statusText).repeatN(n))
-    duration = TimeUnit.NANOSECONDS.toMillis(System.nanoTime() - startTime)
-    _        = println(s"STTP : POST $n requests --- ${(n * 1000 / duration)} requests/sec \n")
+    durationPost = TimeUnit.NANOSECONDS.toMillis(System.nanoTime() - startTime)
+    _        = println(s"\n | STTP | POST | $n | ${(n * 1000 / durationPost)} | %0A ")
 
   } yield ()
 
